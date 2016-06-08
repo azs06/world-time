@@ -8,14 +8,7 @@ var vue = new Vue({
 		}, 1000)
 	},
 	data:{
-		message: "Hello from vue",
 		counter: 0,
-		newTodo: "",
-		todos: [
-		{text: "Todo item 1"},
-		{text: "Todo item 2"},
-		{text: "Todo item 2"}
-		],
 		selectedTimeZone: null,
 		times: []
 	},
