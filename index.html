@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A vueJs world clock</title>
+</head>
+<body>
+
+<div id="app">
+<p>{{message}}</p>
+<input type="text" name="" v-model="message">
+<button @click="reverseMessage">reverse message</button>
+
+<h2>{{counter}}</h2>
+<p>{{time}}</p>
+<span>Selected: {{ selectedTimeZone }}</span><br/>
+<select v-model="selectedTimeZone">
+	<option v-for="timezone in timezones" value="{{timezone.name }}">
+		{{ timezone.name }}
+	</option>
+</select>
+<button @click="getZoneTime">Get Time</button>
+
+<ul>
+	<li v-for="time in times">
+	{{time.name}} ---- {{time.time}}
+	</li>
+</ul>
+</div>
+
+
+<script src="bower_components/vue/dist/vue.js" type="text/javascript"></script>
+<script src="bower_components/moment/moment.js" type="text/javascript"></script>
+<script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js" type="text/javascript"></script>
+<script src="js/app.js" type="text/javascript"></script>
+</body>
+</html>
