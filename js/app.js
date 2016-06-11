@@ -1,3 +1,12 @@
+var store = {
+    key: 'vue-time',
+    fetch: function(){
+        return JSON.parse(localStorage.getItem(this.key) || '[]');
+    },
+    save: function(timezone){
+        localStorage.setItem(this.key, JSON.stringify(timezone));
+    }
+};
 var vue = new Vue({
 	el: "#app",
 	ready: function(){
@@ -10,12 +19,9 @@ var vue = new Vue({
 	data:{
 		counter: 0,
 		selectedTimeZone: null,
-		times: []
+		times: store.fetch()
 	},
 	methods: {
-		reverseMessage: function(){
-			this.message = this.message.split("").reverse().join("");
-		},
 		getZoneTime: function(){
 			var zoneTime = moment().tz(this.selectedTimeZone).format('h:mm:ss a');
 			this.times.push({
@@ -23,6 +29,8 @@ var vue = new Vue({
 				time: zoneTime
 			});
 			console.log(zoneTime);
+            console.log(store.fetch());
+            store.save(this.times);
 		},
 		updateTime: function(){
 			if(this.times.length > 0){
@@ -52,3 +60,6 @@ var vue = new Vue({
 	}
 });
 
+
+
+//vue.data.set('times', store.fetch());
